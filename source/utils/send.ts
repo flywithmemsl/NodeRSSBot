@@ -68,8 +68,9 @@ const send = async (
             toSend.forEach(function (item) {
                 text += `\n<a href="${item.link.trim()}">${sanitize(
                     item.title
-                )}</a>\n\n${sanitize(item.content)}`;
+                )}</a>\n\n${sanitize(item.content)}\ns`;
             });
+
             try {
                 await bot.telegram.sendMessage(userId, text, {
                     parse_mode: 'HTML',

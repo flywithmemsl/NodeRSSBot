@@ -70,10 +70,12 @@ async function fetch(feedUrl: string): Promise<Option<FeedItem[]>> {
                 const { link, title, content, guid, id } = item;
                 return { link, title, content, guid, id };
             }).filter(filter)
-            .map((item) => ({
-                    ...item,
-                    content: parse(item.content)
-                })
+            .map((item) => {
+                return {
+                        ...item,
+                        content: parse(item.content)
+                    }
+                }
             )
 
         );
@@ -139,6 +141,7 @@ const fetchAll = async (): Promise<void> => {
             } catch (e) {
                 logger.debug(e);
             }
+            console.log('CHEEEEEEEEEEK: ', process.send, sendItems)
             process.send &&
                 sendItems &&
                 process.send({

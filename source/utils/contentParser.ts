@@ -32,9 +32,9 @@ export const filter = ({content}) => {
 
 export const parse = (content) => {
 
-  return '<b>'+content.match(/((Hourly Range).*)|((Budget).*)/)[0] 
-  + '<br />' 
-  + content.match(/(Country).*/)[0]
+  return (''+content.match(/((Hourly Range).*)|((Budget).*)/)[0] 
+  + ' ' 
+  + content.match(/(Country).*/)[0]).replace('</b>','').replace('<br />',' ')+'\n\n'
 
   
 }
