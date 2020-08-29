@@ -7,7 +7,8 @@ const BLACKLIST = [
 ]
 
 export const filter = ({content}) => {
-
+  if (content.match(/((Hourly Range).*)|((Budget).*)/)===null) return false
+  
   const rate = content.match(/((Hourly Range).*)|((Budget).*)/)[0]
 
   if ( rate.indexOf('Budget')> -1 ) { 
