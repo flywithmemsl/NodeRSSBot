@@ -141,7 +141,7 @@ const fetchAll = async (): Promise<void> => {
             } catch (e) {
                 logger.debug(e);
             }
-            console.log('CHEEEEEEEEEEK: ', process.send, sendItems)
+            console.log('Check: ', sendItems)
             process.send &&
                 sendItems &&
                 process.send({

@@ -68,7 +68,7 @@ const send = async (
             toSend.forEach(function (item) {
                 text += `\n<a href="${item.link.trim()}">${sanitize(
                     item.title
-                )}</a>\n\n${sanitize(item.content)}\ns`;
+                )}</a>\n\n${sanitize(item.content).replace('</b>','').replace('<br />',' ')}\n\n`;
             });
 
             try {

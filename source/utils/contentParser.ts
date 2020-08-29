@@ -34,7 +34,7 @@ export const parse = (content) => {
 
   return (''+content.match(/((Hourly Range).*)|((Budget).*)/)[0] 
   + ' ' 
-  + content.match(/(Country).*/)[0]).replace('</b>','').replace('<br />',' ')+'\n\n'
+  + content.match(/(Country).*/)[0])
 
   
 }
