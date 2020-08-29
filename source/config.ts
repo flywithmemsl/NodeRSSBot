@@ -1,4 +1,9 @@
 import * as path from 'path';
+import * as dotenv from "dotenv";
+
+dotenv.config();
+console.log('env: ', process.env);
+
 import { Config } from './types/config';
 import { version } from '../package.json';
 
