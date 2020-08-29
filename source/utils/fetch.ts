@@ -9,6 +9,8 @@ import { config } from '../config';
 import { Feed, FeedItem } from '../types/feed';
 import { Optional, Option, isNone, none, isSome, Some } from '../types/option';
 
+import { filter, parse } from './contentParser'
+
 import {
     getAllFeeds,
     updateHashList,
@@ -67,7 +69,13 @@ async function fetch(feedUrl: string): Promise<Option<FeedItem[]>> {
             items.map((item) => {
                 const { link, title, content, guid, id } = item;
                 return { link, title, content, guid, id };
-            })
+            }).filter(filter)
+            .map((item) => ({
+                    ...item,
+                    content: parse(item.content)
+                })
+            )
+
         );
     } catch (e) {
         logger.error(`${feedUrl} ${e.stack || e.message}`);
@@ -113,8 +121,10 @@ const fetchAll = async (): Promise<void> => {
                                 item: FeedItem
                             ): Promise<Option<FeedItem>> => {
                                 const hash = await hashFeed(item);
-                                if (oldHashList.indexOf(hash) === -1)
+                                if (oldHashList.indexOf(hash) === -1) {
                                     return Optional(item);
+                                }
+                                    
                                 else return none;
                             }
                         )

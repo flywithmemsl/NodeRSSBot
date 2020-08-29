@@ -2,7 +2,6 @@ import * as path from 'path';
 import * as dotenv from "dotenv";
 
 dotenv.config();
-console.log('env: ', process.env);
 
 import { Config } from './types/config';
 import { version } from '../package.json';
@@ -19,7 +18,7 @@ export const config: Config = {
         path.join(__dirname, '../../data/database.db'), // /dist/source/config.js -> /data/
     lang: process.env.RSSBOT_LANG || 'zh-cn',
     item_num: parseInt(process.env.RSSBOT_ITEM_NUM) || 10,
-    fetch_gap: process.env.RSSBOT_FETCH_GAP || '5m',
+    fetch_gap: process.env.RSSBOT_FETCH_GAP || '1m',
     notify_error_count: parseInt(process.env.NOTIFY_ERR_COUNT) || 5,
     view_all: !!process.env.RSSBOT_VIEW_ALL || false,
     UA:
