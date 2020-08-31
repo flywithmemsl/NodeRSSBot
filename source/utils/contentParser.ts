@@ -1,5 +1,5 @@
 
-const MIN_RATE = 25
+const MIN_RATE = 20
 const MIN_BUDGET = 500
 
 const BLACKLIST = [
@@ -7,7 +7,8 @@ const BLACKLIST = [
 ]
 
 export const filter = ({content}) => {
-  if (content.match(/((Hourly Range).*)|((Budget).*)/)===null) return false
+
+  // if (content.match(/((Hourly Range).*)|((Budget).*)/)===null) return false
   
   const rate = content.match(/((Hourly Range).*)|((Budget).*)/)[0]
 
@@ -26,7 +27,7 @@ export const filter = ({content}) => {
     return acc && (content.indexOf(el) == -1)
   }, true )
   
-  
+
   return isNotContainingBlacklisted
 }
 
