@@ -1,6 +1,6 @@
 
-const MIN_RATE = 30
-const MIN_BUDGET = 1000
+const MIN_RATE = 25
+const MIN_BUDGET = 500
 
 const BLACKLIST = [
   "India"

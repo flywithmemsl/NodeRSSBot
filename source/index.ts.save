@@ -292,9 +292,9 @@ logger.info(`Using Default language is ${lang}`);
 logger.info(`send the latest ${item_num} items for each feed`);
 logger.info('NodeRSSBot is ready');
 
+
 process.stdout.on('error', function( err ) {
     if (err.code == "EPIPE") {
         process.exit(0);
     }
 });
-
