@@ -7,8 +7,12 @@ const BLACKLIST = [
 ]
 
 export const filter = ({content}) => {
+  
+  const isNotContainingBlacklisted = BLACKLIST.reduce((acc, el) => {
+    return acc && (content.indexOf(el) == -1)
+  }, true )
 
-  // if (content.match(/((Hourly Range).*)|((Budget).*)/)===null) return false
+  if (content.match(/((Hourly Range).*)|((Budget).*)/)===null) return isNotContainingBlacklisted 
   
   const rate = content.match(/((Hourly Range).*)|((Budget).*)/)[0]
 
@@ -22,11 +26,6 @@ export const filter = ({content}) => {
     
 
   }
-
-  const isNotContainingBlacklisted = BLACKLIST.reduce((acc, el) => {
-    return acc && (content.indexOf(el) == -1)
-  }, true )
-  
 
   return isNotContainingBlacklisted
 }
