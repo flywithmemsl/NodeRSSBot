@@ -33,9 +33,11 @@ export const filter = ({content}) => {
 export const parse = (content) => {
 
   const budget = content.match(/((Hourly Range).*)|((Budget).*)/)
+  const country = content.match(/(Country).*/)
+
   return ('' + (!!budget ? budget[0] : '')
   + ' ' 
-  + content.match(/(Country).*/)[0])
+  + (!!country ? country[0] : ''))
 
   
 }

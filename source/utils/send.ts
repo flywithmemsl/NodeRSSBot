@@ -64,7 +64,7 @@ const send = async (
     } else {
         subscribers.map(async (subscribe) => {
             const userId = subscribe.user_id;
-            let text = `<b>${sanitize(feed.feed_title)}</b>`;
+            let text = ''; //`<b>${sanitize(feed.feed_title)}</b>`;
             toSend.forEach(function (item) {
                 text += `\n<a href="${item.link.trim()}">${sanitize(
                     item.title
